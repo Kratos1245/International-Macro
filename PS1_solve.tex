@@ -1,0 +1,65 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{mathtools}% Loads amsmath
+\usepackage{hyperref}
+
+\title{International Macroeconomics \\ Problem Set \#1}
+\author{Studnikov Dmitry\thanks{cfkfl1245@gmail.com}}
+\date{September 2020}
+
+
+
+\begin{document}
+\maketitle
+
+\section*{Task 1} \label{sec:sec1}
+
+\subsection*{a) Household Constraint}
+
+\begin{equation}
+    B_{t+1} - RB_{t} = V_{t}S_{t} - V_{t}S_{t+1} +D_{t}S_{t} - C_{t}, \text{where } R = 1+r
+\end{equation}
+
+\begin{equation}
+    \underbrace{(B_{t+1} - B_t)}_\text{change in bonds} + \underbrace{(V_{t}S_{t+1} - V_{t-1}S_{t})}_\text{change in assets} = rB_t + D_{t}S_{t} + \underbrace{(V_{t}S_{t} - V_{t-1}S_{t})}_\text{capital value changing} - C_t
+    \label{eq:hhconstr}
+\end{equation}
+
+Equation \ref{eq:hhconstr} is the \textit{Household constraint} and representative household makes decision with it:
+
+\begin{equation}
+    \begin{cases}
+        \max\limits_{\{C_{t}, B_{t+1}, S_{t+1}\}} \sum_{t = 0} ^ {+\infty}\beta^{t}U(C_t), \\
+        B_{t+1} - RB_{t} = V_{t}S_{t} - V_{t}S_{t+1} +D_{t}S_{t} - C_{t}
+    \end{cases}
+\end{equation}
+
+\subsection*{b) No-arbitrage condition}
+As we will see in \nameref{sec:sec2} the constraint $V_t = \frac{V_{t+1}+D_{t+1}}{R}$ derives from household utility optimization problem. This expression is also known as "No-arbitrage condition". Arbitrage is a process of getting profit from buying and selling securities \textit{without initial investment} in order to take advantage of differing prices for the same instrument. By the way, how could an individual buy or sell financial instruments (in our model we have only share) without initial investment? In our model economic agent can only take credit and pay it next period. If we calculate arbirtage, we shall get:
+
+\begin{equation*}
+\textit{Arbitrage} = s_t V_t + D_t s_t + RB_{t+1}, \text{where }s_t = \frac{-B_{t+1}}{V_{t-1}}
+\end{equation*}
+
+$B_{t+1}$ is negative as we are borrowing money in period t and paying credit in t+1. $s_t$ shares we bought on this credit, that's why we see that we borrow $B_{t+1} = -s_t V_{t-1}$.
+Imposing No-arbitrage constraint we can figure out our arbitrage:
+\begin{equation} \label{eq:4}
+	s_t\underbrace{(V_t + D_t)}_\text{constraint} - R(s_t V_{t-1}) = s_t (RV_{t-1}) - Rs_t V_{t-1} = 0
+\end{equation}
+
+We see in  equation \ref{eq:4} that arbitrage is always equal to zero due to our constraint.
+
+Economic interpretation of this condition is that values of our credit for shares and "borrowed" shares (into new prices) are the same in all periods and recieved profit from assets price changing equally covers intrest on the loan.
+\subsection*{c) Equilibrium of the stock market value}
+The previous section implies that $ V_t = R^{-1}(V_{t+1} + D_{t+1}) $ on date t for $ V_t $. Anyway, as this corresponding expression holds, it's also true that
+\begin{multline*}
+	V_t = R^{-1}(R^{-1}(V_{t+2} + D_{t+2}) + D_{t+1}) = R^{-2}V_{t+2} + R^{-2}D_{t+2} + R^{-1}D_{t+1} = \\
+	\text{\{continuing to implement no-arbitrage condition\}} = R^{-j}V_{t+j} + \sum_{j=1}^{+\infty}R^{-j}D_{t+j} \\
+	\rightarrow
+\end{multline*}
+
+\subsection*{d) The problem of a representative firm}
+
+
+\section*{Task 2} \label{sec:sec2}
+\end{document}
