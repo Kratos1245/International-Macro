@@ -3,6 +3,7 @@
 \usepackage{mathtools}% Loads amsmath
 \usepackage{hyperref}
 
+
 \title{International Macroeconomics \\ Problem Set \#1}
 \author{Studnikov Dmitry\thanks{cfkfl1245@gmail.com}}
 \date{September 2020}
@@ -25,7 +26,7 @@
     \label{eq:hhconstr}
 \end{equation}
 
-Equation \ref{eq:hhconstr} is the \textit{Household constraint} and representative household makes decision with it:
+Equation \ref{eq:hhconstr} is the \textit{Household constraint} and representative household makes decision imposing it:
 
 \begin{equation}
     \begin{cases}
@@ -34,7 +35,8 @@ Equation \ref{eq:hhconstr} is the \textit{Household constraint} and representati
     \end{cases}
 \end{equation}
 
-\subsection*{b) No-arbitrage condition}
+\subsection*{b) No-arbitrage condition} \label{subsec:b}
+
 As we will see in \nameref{sec:sec2} the constraint $V_t = \frac{V_{t+1}+D_{t+1}}{R}$ derives from household utility optimization problem. This expression is also known as "No-arbitrage condition". Arbitrage is a process of getting profit from buying and selling securities \textit{without initial investment} in order to take advantage of differing prices for the same instrument. By the way, how could an individual buy or sell financial instruments (in our model we have only share) without initial investment? In our model economic agent can only take credit and pay it next period. If we calculate arbirtage, we shall get:
 
 \begin{equation*}
@@ -50,16 +52,32 @@ Imposing No-arbitrage constraint we can figure out our arbitrage:
 We see in  equation \ref{eq:4} that arbitrage is always equal to zero due to our constraint.
 
 Economic interpretation of this condition is that values of our credit for shares and "borrowed" shares (into new prices) are the same in all periods and recieved profit from assets price changing equally covers intrest on the loan.
-\subsection*{c) Equilibrium of the stock market value}
+
+\subsection*{c) Equilibrium of the stock market value} \label{subsec:c}
+
 The previous section implies that $ V_t = R^{-1}(V_{t+1} + D_{t+1}) $ on date t for $ V_t $. Anyway, as this corresponding expression holds, it's also true that
-\begin{multline*}
-	V_t = R^{-1}(R^{-1}(V_{t+2} + D_{t+2}) + D_{t+1}) = R^{-2}V_{t+2} + R^{-2}D_{t+2} + R^{-1}D_{t+1} = \\
-	\text{\{continuing to implement no-arbitrage condition\}} = R^{-j}V_{t+j} + \sum_{j=1}^{+\infty}R^{-j}D_{t+j} \\
-	\rightarrow
-\end{multline*}
+\begin{align*}
+	& V_t = R^{-1}(R^{-1}(V_{t+2} + D_{t+2}) + D_{t+1}) = R^{-2}V_{t+2} + R^{-2}D_{t+2} + R^{-1}D_{t+1} = \\
+	& \text{\{continuing to implement no-arbitrage condition\}} = R^{-j}V_{t+j} + \sum_{j=1}^{+\infty}R^{-j}D_{t+j} \\
+	& \Rightarrow \lim_{j \rightarrow +\infty} V_t = \lim_{j \rightarrow +\infty}R^{-j}V_{t+j} + \lim_{j \rightarrow +\infty}\sum_{j=1}^{+\infty}R^{-j}D_{t+j} \Rightarrow \\ 
+	& \Rightarrow \text{\{imposing no-bubble condition\}} \Rightarrow V_t = \sum_{j=1}^{+\infty}R^{-j}D_{t+j}
+\end{align*}
+As a result, our equilibrium value of a firm $ V_t $ is
+\begin{equation}
+	V_t = \sum_{j=1}^{+\infty}R^{-j}D_{t+j}
+\end{equation}
 
 \subsection*{d) The problem of a representative firm}
+Now we can formulate the representative firm optimization problem making use of our previous progress in sections b) and c) with task conditions:
 
+\begin{equation}
+	\begin{cases}
+	\max\limits_{\{K_{t+1}, I_t, D_t\}}\sum_{j=1}^{+\infty}R^{-j}D_{t+j},\\
+	D_t = Y_t - I_t,\\
+	Y_t = A_t F(K_t), \\
+	K_{t+1} = (1-\delta)K_t + I_t
+	\end{cases}
+\end{equation}
 
 \section*{Task 2} \label{sec:sec2}
 \end{document}
