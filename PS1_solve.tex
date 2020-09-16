@@ -2,10 +2,11 @@
 \usepackage[utf8]{inputenc}
 \usepackage{mathtools}% Loads amsmath
 \usepackage{hyperref}
+\usepackage{ amssymb }
 
 
 \title{International Macroeconomics \\ Problem Set \#1}
-\author{Studnikov Dmitry\thanks{cfkfl1245@gmail.com}}
+\author{Studnikov Dmitry\thanks{studnikoff@gmail.com}}
 \date{September 2020}
 
 
@@ -17,12 +18,12 @@
 
 \subsection*{a) Household Constraint}
 
-\begin{equation}
-    B_{t+1} - RB_{t} = V_{t}S_{t} - V_{t}S_{t+1} +D_{t}S_{t} - C_{t}, \text{where } R = 1+r
+\begin{equation} 
+    B_{t+1} - RB_{t} = V_{t}s_{t} - V_{t}s_{t+1} +D_{t}s_{t} - C_{t}, \text{where } R = 1+r
 \end{equation}
 
 \begin{equation}
-    \underbrace{(B_{t+1} - B_t)}_\text{change in bonds} + \underbrace{(V_{t}S_{t+1} - V_{t-1}S_{t})}_\text{change in assets} = rB_t + D_{t}S_{t} + \underbrace{(V_{t}S_{t} - V_{t-1}S_{t})}_\text{capital value changing} - C_t
+    \underbrace{(B_{t+1} - B_t)}_\text{change in bonds} + \underbrace{(V_{t}s_{t+1} - V_{t-1}s_{t})}_\text{change in assets} = rB_t + D_{t}s_{t} + \underbrace{(V_{t}s_{t} - V_{t-1}s_{t})}_\text{capital value changing} - C_t
     \label{eq:hhconstr}
 \end{equation}
 
@@ -31,10 +32,11 @@ Equation \ref{eq:hhconstr} is the \textit{Household constraint} and representati
 \begin{equation}
     \begin{cases}
         \max\limits_{\{C_{t}, B_{t+1}, S_{t+1}\}} \sum_{t = 0} ^ {+\infty}\beta^{t}U(C_t), \\
-        B_{t+1} - RB_{t} = V_{t}S_{t} - V_{t}S_{t+1} +D_{t}S_{t} - C_{t}
+        B_{t+1} - RB_{t} = V_{t}S_{t} - V_{t}s_{t+1} +D_{t}s_{t} - C_{t}
     \end{cases}
 \end{equation}
 
+If our household representative, we can derive that $ s_t = 1 $ in optimum. Let be $ s_t = const $ then the sum of all shares is $ \int_{0}^{1}s_{t}p(s)ds $, where $ p(s) $ is consumer point density function and $ s $ is consumers measure. As $ s_t $ of a representative consumer that means our pdf is uniform and we get from $ \int_{0}^{1}s_{t}ds = 1$ that $ s_t $ is equal to 1.
 \subsection*{b) No-arbitrage condition} \label{subsec:b}
 
 As we will see in \nameref{sec:sec2} the constraint $V_t = \frac{V_{t+1}+D_{t+1}}{R}$ derives from household utility optimization problem. This expression is also known as "No-arbitrage condition". Arbitrage is a process of getting profit from buying and selling securities \textit{without initial investment} in order to take advantage of differing prices for the same instrument. By the way, how could an individual buy or sell financial instruments (in our model we have only share) without initial investment? In our model economic agent can only take credit and pay it next period. If we calculate arbirtage, we shall get:
@@ -70,7 +72,7 @@ As a result, our equilibrium value of a firm $ V_t $ is
 \subsection*{d) The problem of a representative firm}
 Now we can formulate the representative firm optimization problem making use of our previous progress in sections b) and c) with task conditions:
 
-\begin{equation}
+\begin{equation} \label{eq:fconstr}
 	\begin{cases}
 	\max\limits_{\{K_{t+1}, I_t, D_t\}}\sum_{j=1}^{+\infty}R^{-j}D_{t+j},\\
 	D_t = Y_t - I_t,\\
@@ -80,4 +82,88 @@ Now we can formulate the representative firm optimization problem making use of 
 \end{equation}
 
 \section*{Task 2} \label{sec:sec2}
+Solution the problem of a representative household in \ref{eq:hhconstr} with Lagrange multipliers gives us:
+
+\begin{equation*}
+	\begin{cases}
+	\frac{\partial \mathcal{L}}{\partial C_t} \text{: } \beta^{t}U'(C_t) - \lambda_t = 0,\\
+	\frac{\partial \mathcal{L}}{\partial S_{t+1}} \text{: } -\lambda_t V_t + \lambda_{t+1}(V_{t+1} + D_{t+1}) = 0,\\
+	\frac{\partial \mathcal{L}}{\partial B_{t+1}} \text{: } \lambda_t = R\lambda_{t+1}
+	\end{cases}
+\end{equation*}
+
+
+From first and third expressions we could derive Euler equation:
+\begin{equation} \label{eq:7}
+	\frac{U'(C_t)}{U'(C_{t+1})} = \beta R
+\end{equation}
+
+From second and third we are getting No-arbitage condition:
+
+\begin{equation}
+	V_t = \frac{V_{t+1}+D_{t+1}}{R}
+\end{equation}
+
+Solving the firm's problem \ref{eq:fconstr}:
+
+\begin{align*}
+	&\max V_t = \max\sum_{j=1}^{+\infty} R^{-j}D_{t+j} = \text{\{ index change s= t+j\}} \\
+	&= \max \sum_{s=t+1}^{+\infty}R^{t-s}\left( A_sF(K_s) - K_{s+1} + (1-\delta)K_s \right) \Rightarrow \\
+	&\Rightarrow \text{FOC: } F'(K_s) = \frac{R-(1-\delta)}{A_{s}}\text{, if } s>t
+\end{align*}
+
+So we got that our optimum firm's condition:
+
+\begin{equation}
+A_{s} F'(K_s) = r+\delta\text{, where } r = R-1
+\end{equation}
+
+To understand the impact of the timing of productivity shocks or a discounted stream of dividends on consumption, I will recursively substitute $B_{t+j}$ in household budget constraint:
+
+\begin{align*}
+	&B_t = R^{-1}\left( (C_t + B_{t+1} + V_t(s_{t+1} - s_t) -s_tD_t\right) = R^{-1}( C_t + R^{-1}[C_{t+1} + B_{t+2} \\
+	& + V_{t+1}(s_{t+2}-s_{t+1}) -s_{t+1}D_{t+1}] + V_t(s_{t+1} - s_t) - s_tD_t) = \text{ ... } = \\
+	& = \sum_{j=0}^{+\infty}\left( R^{-j-1}C_{t+j} + R^{-j-1}V_{t+j}(s_{t+j+1} - s_{t+j}) - R^{-j-1}s_{t+j}D_{t+j}\right) + R^{-j}B_{t+j}
+\end{align*}
+
+And if we multiply this expression by R, we can consider:
+\begin{equation*}
+	\sum _ { j = 0 } ^ { \infty } R ^ { - j } \cdot s_{ t + j } \cdot ( V _ { t + j } + D _ { t + j } ) = \sum _ { j = 0 } ^ { \infty } R ^ { - j + 1 } s _ { t + j } V _ { t + j - 1 }
+\end{equation*}
+That's why using previous equation:
+\begin{multline}\label{eq:10}
+	\sum _ { j = 0 } ^ { \infty } R ^ { - j } \cdot V _ { t + j } \cdot s _ { t + j + 1 } - \sum _ { j = 0 } ^ { \infty } R ^ { - j } \cdot s_{ t + j } \cdot ( V _ { t + j } + D _ { t + j } ) =  \sum _ { j = 0 } ^ { \infty } R ^ { - j } \cdot V _ { t + j } \cdot s _ { t + j + 1 } - \\
+	- \sum _ { j = 0 } ^ { \infty } R ^ { - j + 1 } s _ { t + j } V _ { t + j - 1 } = -Rs_tV_{t-1}
+\end{multline}
+
+Summing all up and imposing equation \ref{eq:10} we derived that $ RB_t $ is equal:
+
+
+\begin{equation} \label{eq:11}
+	R B _ { t } = \sum _ { j = 0 } ^ { \infty } R ^ { - j } C _ { t + j } - R s _ { t } V _ { t - 1 } \iff \sum _ { j = 0 } ^ { \infty } R ^ { - j } C _ { t + j } = R \cdot \left( B_t + s_t V_{t-1}\right) 
+\end{equation}
+
+Equation \ref{eq:11} tells us that discounted stream of our consumptions in future depends only on our net "savings" $ B_t $, previously purchased shares $ s_t $ and value of stock market that we know in period t: $ V_{t-1} $. Moreover, taking into account Euler equation \ref{eq:7} and task conditions about function $ U'(C_t) $ it's obvious that there exists inverse function for $ U'(C_{t+j}) = (\beta R)^{-j} U'(C_t) $. It means that optimal $ C_t $ can be explicitly obtained from equation \ref{eq:11} and it is contingent neither on the timing of shocks $ A_t $ nor on discounted stream of dividends.
+
+\section*{Task 3}
+
+From country budget constraint:
+\begin{equation*}
+	CA_t = B_{t+1} - B_t = (R-1) \cdot B _ { t } + D _ { t } - C _ { t } 
+\end{equation*}
+As $ \beta R = 1 $ we can conclude from Euler equation \ref{eq:7} that $ C_{t+1} = C_t $. That's why basing on our results in Task 2, we can derive from equation \ref{eq:11} that
+
+\begin{equation}
+	C_t \sum _ { j = 0 } ^ { \infty } R ^ { - j } =  R \cdot \left( B_t + s_t V_{t-1}\right) \Rightarrow C_t = (R-1)(B_t +s_tV_{t-1})
+\end{equation}
+
+As representative householder optimum of $ s_t = 1 $ we get
+
+\begin{equation}
+	CA_t  = D_t - rV_{t-1}
+\end{equation}
+
+It means that if $ A_t $ unexpectedly increase in T, our dividends should drastically increase in future periods and that means that $ CA_{t} $ in the second wave on average will be higher.
+
+
 \end{document}
